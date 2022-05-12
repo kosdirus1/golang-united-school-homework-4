@@ -64,19 +64,15 @@ func StringSum(input string) (output string, err error) {
 
 	//Calculate signs for each operand and summarize them
 	var so1, so2 = 1, 1
-	for i, v := range strings.SplitN(input, numSlice[0], 2) {
-		if i == 0 {
-			for _, vv := range v {
-				if string(vv) == "-" {
-					so1 *= -1
-				}
-			}
-		} else if i == 1 {
-			for _, vv := range []rune(v) {
-				if string(vv) == "-" {
-					so2 *= -1
-				}
-			}
+	v := strings.SplitN(input, numSlice[0], 2)
+	for _, vv := range v[0] {
+		if string(vv) == "-" {
+			so1 *= -1
+		}
+	}
+	for _, vv := range v[1] {
+		if string(vv) == "-" {
+			so2 *= -1
 		}
 	}
 
